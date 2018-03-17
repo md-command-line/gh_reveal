@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 echo $SHELL | grep -qi bash && shellrc=.bashrc
 echo $SHELL | grep -qi zsh && shellrc=.zshrc
 
