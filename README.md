@@ -4,7 +4,7 @@ in terminal, quickly open the git project in default browser.
 ## Simple installation:
 put the below in your terminal and you are all set up.
 ```bash
-echo 'reveal() { url=$(git remote -v | grep "$1" | grep fetch | cut -c 8- | rev | cut -c 13- | rev );open $url;}; alias reveal="reveal ' >> ~/.bashrc; source ~/.bashrc
+git clone https://github.com/MichaelDimmitt/gh_reveal.git && cd gh_reveal && bash remote_script.sh
 ```
 
 ## Implementation
