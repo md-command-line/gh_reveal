@@ -2,6 +2,12 @@
 in terminal, quickly open the git project in default browser.
 
 ## Simple installation:
+### macintosh
+put the below in your terminal and you are all set up.
+```bash
+echo 'reveal() { url=$(git remote -v | grep "$1" | grep fetch | cut -c 8- | rev | cut -c 13- | rev );open $url;}; alias reveal="reveal ' >> ~/.bashrc; source ~/.bashrc
+```
+### posix compliant attempt
 put the below in your terminal and you are all set up.
 ```bash
 echo 'reveal() { [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1; open $(git remote -v | grep fetch | awk '"'"'{print $2}'"'"' | sed '"'"'s/.git$//'"'"'); };' >> ~/.bashrc; source ~/.bashrc
