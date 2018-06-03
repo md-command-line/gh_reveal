@@ -11,7 +11,7 @@ alias reveal="reveal" ' >> ~/.bashrc; source ~/.bashrc
 ### posix compliant attempt
 put the below in your terminal and you are all set up.
 ```bash
-echo 'reveal() { [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1; open $(git remote -v | grep fetch | awk '"'"'{print $2}'"'"' | sed '"'"'s/.git$//'"'"'); };' >> ~/.bashrc; source ~/.bashrc
+echo 'reveal() { [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1; open $(git remote -v | grep fetch | grep "$1" | awk '"'"'{print $2}'"'"' | sed '"'"'s/.git$//'"'"'); };' >> ~/.bashrc; source ~/.bashrc
 ```
 
 ## Multiline installation
@@ -21,7 +21,7 @@ echo 'reveal() { [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1; open $(g
 cat<<\EOF
 reveal() {
     [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1
-    open "$(git remote -v | grep fetch | awk '{print $2}' | sed 's/.git$//')"
+    open "$(git remote -v | grep fetch | grep "$1" | awk '{print $2}' | sed 's/.git$//')"
 }
 EOF
 } >> ~/.bashrc
