@@ -24,9 +24,14 @@ source ~/.bashrc
 ```
 
 ## Implementation
-```
-reveal
-```
+
+`reveal`
+
+<b>want to reveal all of your projects in a given directory?</b><br/>
+`for d in ./*/ ; do (cd "$d" && echo "$d" && reveal); done`<br/>
+<b>or as with my environment  maybe all of your projects are in a folder that is subdivided by category folders.</b><br/>
+`for d in ./*/ ; do (cd "$d" && echo "$d" &&  for p in ./*/ ; do (cd "$p" && echo "$p" && reveal); done); done`
+
 
 ## Additional Examples
 Reveal takes a <b>single command line argument</b>.
