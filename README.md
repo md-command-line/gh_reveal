@@ -1,6 +1,8 @@
 # reveal_brew
 in terminal, quickly open the git project in default browser.
 
+![reveal gif](https://github.com/MichaelDimmitt/gh_reveal/blob/master/assets/how_reveal_works_my_environment.gif)
+
 ## Simple installation:
 ### posix compliant attempt
 put the below in your terminal and you are all set up.
