@@ -12,9 +12,18 @@ put the below in your terminal and you are all set up.
 ```bash
 {
 cat<<\EOF
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=xdg-open;;
+    Darwin*)    machine=open;;
+    CYGWIN*)    machine=cygstart;;
+    MINGW*)     machine=start;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
 reveal() {
   [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1;
-  echo "$(git remote -v | grep fetch | grep "$1" | grep -o 'github.*' |  awk '{print $1}' | sed 's/.git$//' | cut -c 12- )" | xargs -I {} open https://www.github.com/{}
+  echo "$(git remote -v | grep fetch | grep "$1" | grep -o 'github.*' |  awk '{print $1}' | sed 's/.git$//' | cut -c 12- )" | xargs -I {} $machine https://www.github.com/{}
 }
 EOF
 } >> ~/.bashrc
