@@ -6,18 +6,15 @@ in terminal, quickly open the git project in default browser.
 ## Simple installation:
 ### posix compliant attempt
 put the below in your terminal and you are all set up.
-```bash
-echo 'reveal() { [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1; open $(git remote -v | grep fetch | grep "$1" | awk '"'"'{print $2}'"'"' | sed '"'"'s/.git$//'"'"'); };' >> ~/.bashrc; source ~/.bashrc
-```
 
-## Multiline installation
+## Installation
 
 ```bash
 {
 cat<<\EOF
 reveal() {
-    [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1
-    open "$(git remote -v | grep fetch | grep "$1" | awk '{print $2}' | sed 's/.git$//')"
+  [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1;
+  echo "$(git remote -v | grep fetch | grep "$1" | grep -o 'github.*' |  awk '{print $1}' | sed 's/.git$//' | cut -c 12- )" | xargs -I {} open https://www.github.com/{}
 }
 EOF
 } >> ~/.bashrc
