@@ -10,6 +10,7 @@ put the below in your terminal and you are all set up.
 ## Installation
 
 ```bash
+temp_shell=$(echo $0 | sed 's/-//')
 {
 cat<<\EOF
 unameOut="$(uname -s)"
@@ -33,8 +34,8 @@ reveal() {
   )" | grep fetch |  sed -e $'s/:/\\//g' |  awk '{print $1}' | sed 's/.git$//' | xargs -I {} open https://www.{}
 }
 EOF
-} >> ~/.bashrc
-source ~/.bashrc
+} >> ~/."$temp_shell"rc
+source ~/."$temp_shell"rc
 
 ```
 
