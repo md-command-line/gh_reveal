@@ -20,10 +20,17 @@ case "${unameOut}" in
     MINGW*)     machine=start;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
-
 reveal() {
   [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1;
-  echo "$(git remote -v | grep fetch | grep "$1" | grep -o 'github.*' |  awk '{print $1}' | sed 's/.git$//' | cut -c 12- )" | xargs -I {} $machine https://www.github.com/{}
+  echo "$(
+    git remote -v | grep 'heroku' | grep fetch | grep -o -E ':.*' | 
+    cut -c 19- | awk '{print $1}' | sed 's/.git$//' | 
+    xargs -I {} open https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
+  )"
+  echo "$(
+    git remote -v | grep '@'  | grep -o -E '@.*' | cut -c 2-;
+    git remote -v | grep '//' | grep -o -E ':.*' | cut -c 4- | grep -v 'heroku';
+  )" | grep fetch |  sed -e $'s/:/\\//g' |  awk '{print $1}' | sed 's/.git$//' | xargs -I {} open https://www.{}
 }
 EOF
 } >> ~/.bashrc
