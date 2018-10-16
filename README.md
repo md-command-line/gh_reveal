@@ -24,8 +24,8 @@ esac
 reveal() {
   [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1;
   echo "$(
-    git remote -v | grep "$1" | grep 'heroku' | grep fetch | grep -o -E ':.*' |-
-    cut -c 19- | awk '{print $1}' | sed 's/.git$//' |-
+    git remote -v | grep "$1" | grep 'heroku' | grep fetch | grep -o -E ':.*' |
+    cut -c 19- | awk '{print $1}' | sed 's/.git$//' |
     xargs -I {} open https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
   )"
   echo "$(
