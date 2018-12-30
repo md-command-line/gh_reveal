@@ -1,5 +1,4 @@
 reveal() {
-    set -x
     OS="$(uname -s)"
     case "$OS" in
         Linux*)     open_cmd=xdg-open;;
@@ -21,5 +20,4 @@ reveal() {
     git remote -v | \grep "$1" | \grep '//' | \grep -o -E ':.*' | cut -c 4- | \grep -v 'heroku';
   } | \grep fetch | sed 's@:/\\@@g' | awk '{print $1}' | sed 's@.git$@@' | xargs -I {} "$open_cmd" https://www.{}
 
-set +x
 }
