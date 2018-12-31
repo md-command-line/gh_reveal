@@ -11,7 +11,7 @@ put the below in your terminal and you are all set up.
 
 ```bash
 temp_shell=$(echo $0 | sed 's@^-@@')
-curl -fsSL https://raw.githubusercontent.com/MenkeTechnologies/gh_reveal/master/reveal.sh >> "$HOME/.${temp_shell}rc"
+curl -fsSL https://raw.githubusercontent.com/MichaelDimmitt/gh_reveal/master/reveal.sh >> "$HOME/.${temp_shell}rc"
 source "$HOME/.${temp_shell}rc"
 ```
 
