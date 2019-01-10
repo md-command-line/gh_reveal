@@ -21,12 +21,17 @@ case "${unameOut}" in
     MINGW*)     machine=start;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
+name=$(git config user.name)
+if ! [[ $(git remote -v) ]]; then
+  $machine https://github.com/$name?tab=repositories
+fi
+
 reveal() {
   argValues="$*";
   [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1;
   echo "$(
-    git remote -v | grep "$(echo ${argValues// /\\|})" | grep 'heroku' | grep fetch | grep -o -E ':.*' |-
-    cut -c 19- | awk '{print $1}' | sed 's/.git$//' |-
+    git remote -v | grep "$(echo ${argValues// /\\|})" | grep 'heroku' | grep fetch | grep -o -E ':.*' |
+    cut -c 19- | awk '{print $1}' | sed 's/.git$//' |
     xargs -I {} open https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
   )"
   echo "$(
@@ -65,8 +70,8 @@ Not sure what <b>remote</b> means? (context .git)
 
 
 ## How does it work?
-through the use of command: 
+through the use of command:
 ```git remote -v```
-gather's all <b>remotes</b> for project 
+gather's all <b>remotes</b> for project
 <br>and proceeds to  filter the output into url's
 <br>piping each as a unique url opens all the stuff.
