@@ -27,16 +27,17 @@ if ! [[ $(git remote -v) ]]; then
 fi
 
 reveal() {
+  argValues="$*";
   [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1;
   echo "$(
-    git remote -v | grep "$1" | grep 'heroku' | grep fetch | grep -o -E ':.*' |
+    git remote -v | grep "$(echo ${argValues// /\\|})" | grep 'heroku' | grep fetch | grep -o -E ':.*' |
     cut -c 19- | awk '{print $1}' | sed 's/.git$//' |
     xargs -I {} open https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
   )"
   echo "$(
-    git remote -v | grep "$1" | grep '@'  | grep -o -E '@.*' | cut -c 2-;
-    git remote -v | grep "$1" | grep '//' | grep -o -E ':.*' | cut -c 4- | grep -v 'heroku';
-  )" | grep fetch | sed -e $'s/:/\\//g' |  awk '{print $1}' | sed 's/.git$//' | xargs -I {} open https://www.{}
+    git remote -v | grep "$(echo ${argValues// /\\|})" | grep '@'  | grep -o -E '@.*' | cut -c 2-;
+    git remote -v | grep "$(echo ${argValues// /\\|})" | grep '//' | grep -o -E ':.*' | cut -c 4- | grep -v 'heroku';
+  )" | grep fetch |  sed -e $'s/:/\\//g' |  awk '{print $1}' | sed 's/.git$//' | xargs -I {} open https://www.{}
 }
 EOF
 } >> ~/."$temp_shell"rc
