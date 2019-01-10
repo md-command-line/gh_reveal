@@ -41,8 +41,8 @@ Not sure what <b>remote</b> means? (context .git)
 
 
 ## How does it work?
-through the use of command: 
+through the use of command:
 ```git remote -v```
-gather's all <b>remotes</b> for project 
+gather's all <b>remotes</b> for project
 <br>and proceeds to  filter the output into url's
 <br>piping each as a unique url opens all the stuff.
