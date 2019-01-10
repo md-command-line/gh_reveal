@@ -10,6 +10,11 @@ reveal() {
 
   [[ ! -d .git ]] && echo "Not a git directory" >&2 && return 1
 
+  name=$(git config user.name)
+  if ! [[ $(git remote -v) ]]; then
+    $OS https://github.com/$name?tab=repositories
+  fi
+
   command git remote -v | command grep "$1" | command grep 'heroku' | command grep fetch | command grep -o -E ':.*' | \
   cut -c 19- | command awk '{print $1}' | command sed 's@.git$@@' | \
   command xargs -I {} "$open_cmd" https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
