@@ -1,19 +1,21 @@
 # reveal_brew
 in terminal, quickly open the git project in default browser.
 
-## Simple installation:
-
+## Simple install/uninstall instructions:
+install
 ```bash
-bash -c '
-curl -fsSL -o /usr/local/bin/reveal https://raw.githubusercontent.com/MenkeTechnologies/gh_reveal/master/reveal.sh &&
-echo "reveal \"$@\"" >> /usr/local/bin/reveal &&
-chmod +x /usr/local/bin/reveal'
+git clone https://github.com/MichaelDimmitt/gh_reveal.git && cd gh_reveal; ./install.sh; && cd ..;
+```
+
+uninstall
+```
+git clone https://github.com/MichaelDimmitt/gh_reveal.git && cd gh_reveal; ./uninstall.sh; && cd .. && rm -rf gh_reveal;
 ```
 
 ## Clone the project for an alternative install/uninstall experience:
 Clone and cd into the project:
 ```bash
-git clone https://github.com/MichaelDimmitt/gh_reveal.git && cd gh_reveal
+git clone https://github.com/MichaelDimmitt/gh_reveal.git && cd gh_reveal;
 ```
 
 install
@@ -25,9 +27,6 @@ uninstall
 ```bash
 ./uninstall.sh
 ```
-
-
-
 
 ## Implementation
 
@@ -57,7 +56,11 @@ Not sure what <b>remote</b> means? (context .git)
 
 ## How does it work?
 through the use of command:
-```git remote -v```
+```
+git remote -v
+```
 gather's all <b>remotes</b> for project
 <br>and proceeds to  filter the output into url's
 <br>piping each as a unique url opens all the stuff.
+
+## Homebrew brew and zshrc plugin coming soon!
