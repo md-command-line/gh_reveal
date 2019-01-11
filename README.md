@@ -10,6 +10,25 @@ echo "reveal \"$@\"" >> /usr/local/bin/reveal &&
 chmod +x /usr/local/bin/reveal'
 ```
 
+## Clone the project for an alternative install/uninstall experience:
+Clone and cd into the project:
+```bash
+git clone https://github.com/MichaelDimmitt/gh_reveal.git && cd gh_reveal
+```
+
+install
+```bash
+./install.sh;
+```
+
+uninstall
+```bash
+./uninstall.sh
+```
+
+
+
+
 ## Implementation
 
 `reveal`
