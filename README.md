@@ -1,16 +1,11 @@
 # reveal_brew
 in terminal, quickly open the git project in default browser.
 
-![reveal gif](https://github.com/MichaelDimmitt/gh_reveal/blob/master/assets/how_reveal_works_my_environment.gif)
-
 ## Simple installation:
-### posix compliant attempt
-put the below in your terminal and you are all set up.
-
-## Installation
 
 ```bash
-bash -c 'curl -fsSL -o /usr/local/bin/reveal https://raw.githubusercontent.com/MenkeTechnologies/gh_reveal/master/reveal.sh &&
+bash -c '
+curl -fsSL -o /usr/local/bin/reveal https://raw.githubusercontent.com/MenkeTechnologies/gh_reveal/master/reveal.sh &&
 echo "reveal \"$@\"" >> /usr/local/bin/reveal &&
 chmod +x /usr/local/bin/reveal'
 ```
@@ -25,6 +20,7 @@ chmod +x /usr/local/bin/reveal'
 <b>or as with my environment  maybe all of your projects are in a folder that is subdivided by category folders.</b><br/>
 `for d in ./*/ ; do (cd "$d" && echo "$d" &&  for p in ./*/ ; do (cd "$p" && echo "$p" && reveal); done); done`
 
+![reveal gif](https://github.com/MichaelDimmitt/gh_reveal/blob/master/assets/how_reveal_works_my_environment.gif)
 
 ## Additional Examples
 Reveal takes a <b>single command line argument</b>.
