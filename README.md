@@ -10,39 +10,9 @@ put the below in your terminal and you are all set up.
 ## Installation
 
 ```bash
-temp_shell=$(echo $0 | sed 's/-//')
-{
-cat<<\EOF
-unameOut="$(uname -s)"
-case "${unameOut}" in
-    Linux*)     machine=xdg-open;;
-    Darwin*)    machine=open;;
-    CYGWIN*)    machine=cygstart;;
-    MINGW*)     machine=start;;
-    *)          machine="UNKNOWN:${unameOut}"
-esac
-name=$(git config user.name)
-if ! [[ $(git remote -v) ]]; then
-  $machine https://github.com/$name?tab=repositories
-fi
-
-reveal() {
-  argValues="$*";
-  [[ ! -d .git ]] && echo "Not git dir" >&2 && return 1;
-  echo "$(
-    git remote -v | grep "$(echo ${argValues// /\\|})" | grep 'heroku' | grep fetch | grep -o -E ':.*' |
-    cut -c 19- | awk '{print $1}' | sed 's/.git$//' |
-    xargs -I {} open https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
-  )"
-  echo "$(
-    git remote -v | grep "$(echo ${argValues// /\\|})" | grep '@'  | grep -o -E '@.*' | cut -c 2-;
-    git remote -v | grep "$(echo ${argValues// /\\|})" | grep '//' | grep -o -E ':.*' | cut -c 4- | grep -v 'heroku';
-  )" | grep fetch |  sed -e $'s/:/\\//g' |  awk '{print $1}' | sed 's/.git$//' | xargs -I {} open https://www.{}
-}
-EOF
-} >> ~/."$temp_shell"rc
-source ~/."$temp_shell"rc
-
+temp_shell=$(echo $0 | sed 's@^-@@')
+curl -fsSL https://raw.githubusercontent.com/MichaelDimmitt/gh_reveal/master/reveal.sh >> "$HOME/.${temp_shell}rc"
+source "$HOME/.${temp_shell}rc"
 ```
 
 ## Implementation
@@ -51,6 +21,7 @@ source ~/."$temp_shell"rc
 
 <b>want to reveal all of your projects in a given directory?</b><br/>
 `for d in ./*/ ; do (cd "$d" && echo "$d" && reveal); done`<br/>
+
 <b>or as with my environment  maybe all of your projects are in a folder that is subdivided by category folders.</b><br/>
 `for d in ./*/ ; do (cd "$d" && echo "$d" &&  for p in ./*/ ; do (cd "$p" && echo "$p" && reveal); done); done`
 
