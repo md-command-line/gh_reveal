@@ -10,9 +10,9 @@ put the below in your terminal and you are all set up.
 ## Installation
 
 ```bash
-temp_shell=$(echo $0 | sed 's@^-@@')
-curl -fsSL https://raw.githubusercontent.com/MichaelDimmitt/gh_reveal/master/reveal.sh >> "$HOME/.${temp_shell}rc"
-source "$HOME/.${temp_shell}rc"
+bash -c 'curl -fsSL -o /usr/local/bin/reveal https://raw.githubusercontent.com/MenkeTechnologies/gh_reveal/master/reveal.sh &&
+echo "reveal \"$@\"" >> /usr/local/bin/reveal &&
+chmod +x /usr/local/bin/reveal'
 ```
 
 ## Implementation
