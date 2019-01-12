@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 reveal() {
   OS="$(uname -s)"
   case "$OS" in
