@@ -13,7 +13,7 @@ reveal() {
 
   name=$(git config user.name)
   if ! [[ $(git remote -v) ]]; then
-    $OS https://github.com/$name?tab=repositories
+    $open_cmd https://github.com/$name?tab=repositories
   fi
 
   argValues="$*";
