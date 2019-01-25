@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 source ./credential.sh
 install(){
   curl -fsSL -o /usr/local/bin/reveal https://raw.githubusercontent.com/MenkeTechnologies/gh_reveal/master/reveal.sh &&
