@@ -17,7 +17,7 @@ brew install reveal;
 <b>or as with my environment  maybe all of your projects are in a folder that is subdivided by category folders.</b><br/>
 `for d in ./*/ ; do (cd "$d" && echo "$d" &&  for p in ./*/ ; do (cd "$p" && echo "$p" && reveal); done); done`
 
-![reveal gif](https://github.com/MichaelDimmitt/gh_reveal/blob/master/assets/how_reveal_works_my_environment.gif)
+![reveal gif](https://github.com/MichaelDimmitt/assets_used_by_other_repos/blob/master/assets/how_reveal_works_my_environment.gif)
 
 ## Additional Examples
 Reveal takes a <b>single command line argument</b>.
