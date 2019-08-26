@@ -38,13 +38,18 @@ reveal() {
     for dir in "$@" ; do ( builtin cd "$dir" && reveal; ) done
     return 0
   fi
-    argValues="$*";
-    command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep 'heroku' | command grep fetch | command grep -o -E ':.*' | \
-        cut -c 19- | command awk '{print $1}' | command sed 's@.git$@@' | \
-        command xargs -I {} "$open_cmd" https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
-    {
-        command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep '@'  | command grep -o -E '@.*' | cut -c 2-
-        command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep '//' | command grep -o -E ':.*' | cut -c 4- | command grep -v 'heroku'
-    } | command grep fetch | command sed 's@:@\/@g' | command awk '{print $1}' | sed 's@.git@@' | command xargs -I {} "$open_cmd" https://www.{}
-  echo 'reached'
+
+  argValues="$@";
+  command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep 'heroku' | command grep fetch | command grep -o -E ':.*' | \
+      cut -c 19- | command awk '{print $1}' | command sed 's@.git$@@' | \
+      command xargs -I {} "$open_cmd" https://dashboard.heroku.com/apps/{} https://{}.herokuapp.com
+  {
+      command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep '@'  | command grep -o -E '@.*' | cut -c 2-
+      command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep '//' | command grep -o -E ':.*' | cut -c 4- | command grep -v 'heroku'
+  } | command grep fetch | command sed 's@:@\/@g' | command awk '{print $1}' | sed 's@.git@@' | command xargs -I {} "$open_cmd" https://www.{}
+
+  unset find_open_command_from_Operating_System
+  unset no_git_dir_no_args
+  unset no_git_dir_yes_args
+
 }
