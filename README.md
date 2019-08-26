@@ -42,7 +42,13 @@ gather's all <b>remotes</b> for project
 <br>and proceeds to  filter the output into url's
 <br>piping each as a unique url opens all the stuff.
 
-## zshrc plugin coming soon!
+## Install as oh-my-zsh plugin
+```bash
+git clone https://github.com/MichaelDimmitt/gh_reveal.git ~/.oh-my-zsh/custom/plugins/gh_reveal
+```
+add gh_reveal to plugins array in `~/.zshrc` like so
+`plugins=(gh_reveal git zsh-more-completions)`
+
 
 ## Alternative install/uninstall experience:
 Clone and cd into the project:
