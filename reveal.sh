@@ -21,7 +21,7 @@ reveal() {
   }
 
   function no_git_dir_yes_args() { # length of "$1" is not zero and is not a git directory.
-    if ! [[ -z "$1" ]] && ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
+    if [[ -n "$1" ]] && ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
       return 0
     else
       return 1
@@ -29,13 +29,19 @@ reveal() {
   }
 
   local open_cmd=$(find_open_command_from_Operating_System)
-  local name=$(git config user.name)
+  if [[ -z "$GITHUB_ACCOUNT" ]]; then
+    local name=$(git config user.name)
+  else
+    local name="$GITHUB_ACCOUNT"
+   fi
 
   if no_git_dir_no_args $1; then
     "$open_cmd" "https://github.com/$name?tab=repositories"
     return 0
   elif no_git_dir_yes_args $1; then
-    for dir in "$@" ; do ( builtin cd "$dir" && reveal; ) done
+    for dir in "$@" ; do
+      ( builtin cd "$dir" && reveal; )
+    done
     return 0
   fi
 
