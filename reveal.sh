@@ -37,11 +37,17 @@ reveal() {
 
   if no_git_dir_no_args $1; then
     "$open_cmd" "https://github.com/$name?tab=repositories"
+    unset -f find_open_command_from_Operating_System
+    unset -f no_git_dir_no_args
+    unset -f no_git_dir_yes_args
     return 0
   elif no_git_dir_yes_args $1; then
     for dir in "$@" ; do
       ( builtin cd "$dir" && reveal; )
     done
+    unset -f find_open_command_from_Operating_System
+    unset -f no_git_dir_no_args
+    unset -f no_git_dir_yes_args
     return 0
   fi
 
@@ -54,8 +60,8 @@ reveal() {
       command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep '//' | command grep -o -E ':.*' | cut -c 4- | command grep -v 'heroku'
   } | command grep fetch | command sed 's@:@\/@g' | command awk '{print $1}' | sed 's@.git@@' | command xargs -I {} "$open_cmd" https://www.{}
 
-  unset find_open_command_from_Operating_System
-  unset no_git_dir_no_args
-  unset no_git_dir_yes_args
+    unset -f find_open_command_from_Operating_System
+    unset -f no_git_dir_no_args
+    unset -f no_git_dir_yes_args
 
 }
