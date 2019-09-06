@@ -65,3 +65,4 @@ reveal() {
     unset -f no_git_dir_yes_args
 
 }
+reveal $@
