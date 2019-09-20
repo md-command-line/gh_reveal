@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 reveal() {
   find_open_command_from_Operating_System() {
-    local OS="$(uname -s)"
-    case "$OS" in
-      Linux*)     open_cmd=xdg-open;;
-      Darwin*)    open_cmd=open;;
-      CYGWIN*)    open_cmd=cygstart;;
-      MINGW*)     open_cmd=start;;
-      *)          echo "Your OS: $OS is unsupported..." >&2 && return 2;;
+    local open_cmd
+    OSTYPE="$(uname -s | tr 'A-Z' 'a-z')"
+
+    case "$OSTYPE" in
+    darwin*)  open_cmd='open' ;;
+    cygwin*)  open_cmd='cygstart' ;;
+    linux*)   [[ "$(uname -r)" != *icrosoft* ]] && open_cmd='nohup xdg-open' || {
+                open_cmd='cmd.exe /c start ""'
+                } ;;
+    msys*)    open_cmd='start ""' ;;
+    *)        echo "Platform $OSTYPE not supported"
+                return 1
+                ;;
     esac
-    echo $open_cmd
-  }
+    echo "$open_cmd"
+}
 
   function no_git_dir_no_args() { # length of "$1" is zero and is not a git directory.
     if [[ -z "$1" ]] && ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
