@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 reveal() {
+    isZsh(){
+        if command ps -ef | tr -s ' ' | \
+            perl -lane 'print $_ if $F[1] =~ /'$$'/' \
+            | command grep -q zsh; then
+            return 0
+        else
+            return 1
+        fi
+    }
+
+    if isZsh; then
+        setopt localoptions shwordsplit
+    fi
+
   find_open_command_from_Operating_System() {
     local open_cmd
     OSTYPE="$(uname -s | tr 'A-Z' 'a-z')"
@@ -18,7 +32,7 @@ reveal() {
     echo "$open_cmd"
 }
 
-  function no_git_dir_no_args() { # length of "$1" is zero and is not a git directory.
+  no_git_dir_no_args() { # length of "$1" is zero and is not a git directory.
     if [[ -z "$1" ]] && ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
       return 0
     else
@@ -26,7 +40,7 @@ reveal() {
     fi
   }
 
-  function no_git_dir_yes_args() { # length of "$1" is not zero and is not a git directory.
+  no_git_dir_yes_args() { # length of "$1" is not zero and is not a git directory.
     if [[ -n "$1" ]] && ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
       return 0
     else
@@ -69,6 +83,7 @@ reveal() {
     unset -f find_open_command_from_Operating_System
     unset -f no_git_dir_no_args
     unset -f no_git_dir_yes_args
+    unset -f isZsh
 
 }
 $(return 0 >/dev/null 2>&1) || reveal $@
