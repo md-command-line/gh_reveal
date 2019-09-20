@@ -71,4 +71,4 @@ reveal() {
     unset -f no_git_dir_yes_args
 
 }
-reveal $@
+$(return 0 >/dev/null 2>&1) || reveal $@
