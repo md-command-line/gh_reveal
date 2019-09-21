@@ -1,2 +1,2 @@
-source "${0:h}/reveal.sh"
+source "${0:h}/reveal"
 
