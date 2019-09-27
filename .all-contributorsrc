@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "MichaelDimmitt",
+      "name": "MichaelDimmitt",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11463275?v=4",
+      "profile": "https://twitter.com/m_dimmitt",
+      "contributions": [
+        "infra",
+        "doc",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "gh_reveal",
+  "projectOwner": "MichaelDimmitt",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
