@@ -77,6 +77,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://twitter.com/m_dimmitt"><img src="https://avatars1.githubusercontent.com/u/11463275?v=4" width="100px;" alt="MichaelDimmitt"/><br /><sub><b>MichaelDimmitt</b></sub></a><br /><a href="#infra-MichaelDimmitt" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/MichaelDimmitt/gh_reveal/commits?author=MichaelDimmitt" title="Documentation">📖</a> <a href="https://github.com/MichaelDimmitt/gh_reveal/commits?author=MichaelDimmitt" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.jakobmenke.com"><img src="https://avatars0.githubusercontent.com/u/18195247?v=4" width="100px;" alt="Jacob Menke"/><br /><sub><b>Jacob Menke</b></sub></a><br /><a href="#infra-MenkeTechnologies" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/MichaelDimmitt/gh_reveal/commits?author=MenkeTechnologies" title="Code">💻</a></td>
   </tr>
 </table>
 
