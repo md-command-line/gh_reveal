@@ -1,4 +1,5 @@
 # reveal_brew
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 in terminal, quickly open the git project in default browser.
 
 ## Install with Homebrew (macintosh computers):
@@ -66,3 +67,19 @@ uninstall
 ./uninstall.sh
 ```
 
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="http://www.jakobmenke.com"><img src="https://avatars0.githubusercontent.com/u/18195247?v=4" width="100px;" alt="Jacob Menke"/><br /><sub><b>Jacob Menke</b></sub></a><br /><a href="#infra-MenkeTechnologies" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/MichaelDimmitt/gh_reveal/commits?author=MenkeTechnologies" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
