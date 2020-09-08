@@ -43,6 +43,14 @@ gather's all <b>remotes</b> for project
 <br>and proceeds to  filter the output into url's
 <br>piping each as a unique url opens all the stuff.
 
+## Install for Zinit
+> `~/.zshrc`
+```sh
+source "$HOME/.zinit/bin/zinit.zsh"
+zinit ice lucid nocompile
+zinit load MichaelDimmitt/gh_reveal
+```
+
 ## Install as oh-my-zsh plugin
 ```bash
 git clone https://github.com/MichaelDimmitt/gh_reveal.git ~/.oh-my-zsh/custom/plugins/gh_reveal
