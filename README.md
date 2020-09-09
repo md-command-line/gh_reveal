@@ -4,7 +4,7 @@ in terminal, quickly open the git project in default browser.
 
 ## Install with Homebrew (macintosh computers):
 ```
-brew tap michaeldimmitt/reveal &&
+brew tap md-command-line/reveal &&
 brew install reveal;
 ```
 
@@ -48,12 +48,12 @@ gather's all <b>remotes</b> for project
 ```sh
 source "$HOME/.zinit/bin/zinit.zsh"
 zinit ice lucid nocompile
-zinit load MichaelDimmitt/gh_reveal
+zinit load md-command-line/gh_reveal
 ```
 
 ## Install as oh-my-zsh plugin
 ```bash
-git clone https://github.com/MichaelDimmitt/gh_reveal.git ~/.oh-my-zsh/custom/plugins/gh_reveal
+git clone https://github.com/md-command-line/gh_reveal.git ~/.oh-my-zsh/custom/plugins/gh_reveal
 ```
 add gh_reveal to plugins array in `~/.zshrc` like so
 `plugins=(gh_reveal git zsh-more-completions)`
@@ -62,7 +62,7 @@ add gh_reveal to plugins array in `~/.zshrc` like so
 ## Alternative install/uninstall experience:
 Clone and cd into the project:
 ```bash
-git clone https://github.com/MichaelDimmitt/gh_reveal.git && cd gh_reveal;
+git clone https://github.com/md-command-line/gh_reveal.git && cd gh_reveal;
 ```
 
 install
@@ -84,8 +84,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore -->
 <table>
   <tr>
-    <td align="center"><a href="https://twitter.com/m_dimmitt"><img src="https://avatars1.githubusercontent.com/u/11463275?v=4" width="100px;" alt="MichaelDimmitt"/><br /><sub><b>MichaelDimmitt</b></sub></a><br /><a href="#infra-MichaelDimmitt" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/MichaelDimmitt/gh_reveal/commits?author=MichaelDimmitt" title="Documentation">📖</a> <a href="https://github.com/MichaelDimmitt/gh_reveal/commits?author=MichaelDimmitt" title="Code">💻</a></td>
-    <td align="center"><a href="http://www.jakobmenke.com"><img src="https://avatars0.githubusercontent.com/u/18195247?v=4" width="100px;" alt="Jacob Menke"/><br /><sub><b>Jacob Menke</b></sub></a><br /><a href="#infra-MenkeTechnologies" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/MichaelDimmitt/gh_reveal/commits?author=MenkeTechnologies" title="Code">💻</a></td>
+    <td align="center"><a href="https://twitter.com/m_dimmitt"><img src="https://avatars1.githubusercontent.com/u/11463275?v=4" width="100px;" alt="MichaelDimmitt"/><br /><sub><b>MichaelDimmitt</b></sub></a><br /><a href="#infra-MichaelDimmitt" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/md-command-line/gh_reveal/commits?author=MichaelDimmitt" title="Documentation">📖</a> <a href="https://github.com/md-command-line/gh_reveal/commits?author=MichaelDimmitt" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.jakobmenke.com"><img src="https://avatars0.githubusercontent.com/u/18195247?v=4" width="100px;" alt="Jacob Menke"/><br /><sub><b>Jacob Menke</b></sub></a><br /><a href="#infra-MenkeTechnologies" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/md-command-line/gh_reveal/commits?author=MenkeTechnologies" title="Code">💻</a></td>
   </tr>
 </table>
 
