@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 reveal() {
-    isZsh(){
+    ___reveal_is_zsh(){
         if command ps -p $$ | command grep -q zsh; then
             return 0
         else
@@ -8,11 +8,11 @@ reveal() {
         fi
     }
 
-    if isZsh; then
+    if ___reveal_is_zsh; then
         setopt localoptions shwordsplit
     fi
 
-  find_open_command_from_Operating_System() {
+  ___reveal__find_open_command_from_Operating_System() {
     local open_cmd
     OSTYPE="$(uname -s | tr 'A-Z' 'a-z')"
 
@@ -30,7 +30,7 @@ reveal() {
     echo "$open_cmd"
 }
 
-  no_git_dir_no_args() { # length of "$1" is zero and is not a git directory.
+  ___reveal_no_git_dir_no_args() { # length of "$1" is zero and is not a git directory.
     if [[ -z "$1" ]] && ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
       return 0
     else
@@ -38,7 +38,7 @@ reveal() {
     fi
   }
 
-  no_git_dir_yes_args() { # length of "$1" is not zero and is not a git directory.
+  ___reveal_no_git_dir_yes_args() { # length of "$1" is not zero and is not a git directory.
     if [[ -n "$1" ]] && ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
       return 0
     else
@@ -46,27 +46,27 @@ reveal() {
     fi
   }
 
-  local open_cmd=$(find_open_command_from_Operating_System)
+  local open_cmd=$(___reveal__find_open_command_from_Operating_System)
   if [[ -z "$GITHUB_ACCOUNT" ]]; then
     local name=$(git config user.name)
   else
     local name="$GITHUB_ACCOUNT"
   fi
 
-  if no_git_dir_no_args $1; then
+  if ___reveal_no_git_dir_no_args $1; then
     $open_cmd "https://github.com/$name?tab=repositories" >/dev/null 2>&1
-    unset -f find_open_command_from_Operating_System
-    unset -f no_git_dir_no_args
-    unset -f no_git_dir_yes_args
+    unset -f ___reveal__find_open_command_from_Operating_System
+    unset -f ___reveal_no_git_dir_no_args
+    unset -f ___reveal_no_git_dir_yes_args
     return 0
-  elif no_git_dir_yes_args $1; then
+  elif ___reveal_no_git_dir_yes_args $1; then
     for dir in "$@" ; do
       ( builtin cd "$dir" && reveal; )
     done
-    unset -f find_open_command_from_Operating_System
-    unset -f no_git_dir_no_args
-    unset -f no_git_dir_yes_args
-    unset -f isZsh
+    unset -f ___reveal__find_open_command_from_Operating_System
+    unset -f ___reveal_no_git_dir_no_args
+    unset -f ___reveal_no_git_dir_yes_args
+    unset -f ___reveal_is_zsh
     return 0
   fi
 
@@ -79,10 +79,10 @@ reveal() {
       command git remote -v | command grep -E "$(echo ${argValues/ /|})" | command grep '//' | command grep -o -E ':.*' | cut -c 4- | command grep -v 'heroku'
   } | command grep fetch | command perl -pe 's@:\d{1,5}/@/@' | command sed 's@:@\/@g' | command awk '{print $1}' | sed 's@.git$@@' | command xargs -I {} $open_cmd https://{} >/dev/null 2>&1
 
-    unset -f find_open_command_from_Operating_System
-    unset -f no_git_dir_no_args
-    unset -f no_git_dir_yes_args
-    unset -f isZsh
+    unset -f ___reveal__find_open_command_from_Operating_System
+    unset -f ___reveal_no_git_dir_no_args
+    unset -f ___reveal_no_git_dir_yes_args
+    unset -f ___reveal_is_zsh
 
 }
 
