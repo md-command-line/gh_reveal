@@ -1,9 +1,9 @@
 #compdef reveal
-function __reveal(){
+function _reveal(){
 
     local ret
 
-    if ! isGitDir; then
+    if ! command git rev-parse --git-dir 2> /dev/null 1>&2; then
         _message "$PWD is not a git dir"
         return 1
     fi
@@ -30,4 +30,4 @@ function __reveal(){
     _describe -t remotes remote ary
 }
 
-__reveal "$@"
+_reveal "$@"
