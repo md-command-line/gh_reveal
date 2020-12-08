@@ -1,0 +1,33 @@
+#compdef reveal
+function __reveal(){
+
+    local ret
+
+    if ! isGitDir; then
+        _message "$PWD is not a git dir"
+        return 1
+    fi
+
+    local -A map
+    local -a ary
+    local remote url all="All:" prevVal
+
+    while read remote url; do
+        prevVal=$map[$remote]
+        if [[ -z "$prevVal" ]]; then
+            map[$remote]="$url"
+        else
+            map[$remote]="$prevVal $url"
+        fi
+        all="$all $url"
+    done < <(git remote -v)
+
+    for k v in ${(kv)map[@]};do
+        ary+=("$k:$v")
+    done
+    ary+=(":$all")
+
+    _describe -t remotes remote ary
+}
+
+__reveal "$@"
