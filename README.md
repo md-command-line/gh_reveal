@@ -4,9 +4,13 @@ in terminal, quickly open the git project in default browser.
 
 ## Install with Homebrew (macintosh computers):
 ```
-brew tap md-command-line/reveal &&
+brew tap md-command-line/taps &&
 brew install reveal;
 ```
+
+### To see additional taps checkout:
+- https://github.com/md-command-line/homebrew-taps
+- https://github.com/MenkeTechnologies/homebrew-taps
 
 ## Implementation
 
