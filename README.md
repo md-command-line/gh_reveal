@@ -1,5 +1,5 @@
 # reveal_brew
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 in terminal, quickly open the git project in default browser.
 
 ## Install with Homebrew (macintosh computers):
