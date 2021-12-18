@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 reveal() {
     ___reveal_is_zsh(){
-        if command ps -p $$ | command grep -q zsh; then
-            return 0
-        else
-            return 1
-        fi
+        test -n "$ZSH_VERSION"
     }
 
     if ___reveal_is_zsh; then
